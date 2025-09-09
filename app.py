@@ -8,4 +8,14 @@ CORS(app)
 app.register_blueprint(routes)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="127.0.0.1", port=5000)
+    aport = int(os.getenv('PORT', 5000))
+    debug = os.getenv('DEBUG', 'False').lower() == 'true'
+    
+    logger.info(f"Starting Flask server on port {port}")
+    logger.info(f"Debug mode: {debug}")
+    
+    app.run(
+        host='0.0.0.0',  
+        port=port,
+        debug=debug
+    )
